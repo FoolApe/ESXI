@@ -130,14 +130,6 @@ elif [ $control == "available" ];then
 				CState_check=`cat $BIOS |grep ProcCStates |awk -F \= '{print $2}' |sed 's/\#//g'`
 				key=$dir/job_key
 	
-				#	echo $hot_check
-				#	echo $sysprofile_check
-				#	echo $HT_check
-				#	echo $CPUpwr_check
-				#	echo $MEMfre_check
-				#	echo $Turbo_check
-				#	echo $C1E_check
-				#	echo $CState_check 
 				echo "===  檢查結果 ===" |tee >> $BIOS_log
 				if [ "$hot_check" == "Disabled" ];then
 					echo "熱備援     OK" |tee >> $BIOS_log
@@ -288,14 +280,6 @@ elif [ $control == "available" ];then
 		    	C1E_check=`cat $BIOS |grep "Processors.C1EnhancedMode" |awk -F \= '{print $2}'`
 		    	CState_check=`cat $BIOS |grep "Processors.CStates" |awk -F \= '{print $2}'`
 
-				#   echo $hot_check
-				#   echo $sysprofile_check
-				#   echo $HT_check
-				#   echo $CPUpwr_check
-				#   echo $MEMfre_check
-				#   echo $Turbo_check
-				#   echo $C1E_check
-				#   echo $CState_check
 		    	echo "===  檢查結果 ===" |tee >> $BIOS_log
 		    	if [ "$hot_check" == "Restore" ];then
 		        	echo "電源設定   OK" |tee >> $BIOS_log
@@ -304,7 +288,6 @@ elif [ $control == "available" ];then
 					$oneCLI config set IMM.PowerRestorePolicy "Restore" -b USERID:$ipmi_pass@$ipmi_tmp
 		    	fi
 
-		    #	if [ "$sysprofile_check" == "Custom Mode" ];then
 				if [ "$sysprofile_check" == "Maximum Performance" ];then
 			        echo "運作模式   OK" |tee >> $BIOS_log
 		    	else
@@ -448,17 +431,8 @@ elif [ $control == "available" ];then
                 	/sbin/ilorest logout |tee > /dev/null
 				}
 
-			 ### 避免重複更新
-			 #		get-state
-			 #		State_tmp=`cat $State`
-			 #		if [ $State_tmp == "InPost" ];then
-			 #			echo "Server 忙碌中" |tee >> $BIOS_log
-
-			 #		elif [ $State_tmp == "FinishedPost" ];then
-
 
 			 ### 取得BIOS設定
-		
 				get-bios-9
 	
 		    	Pwr_check=`cat $BIOS |grep "RedundantPowerSupply" |awk -F \= '{print $2}' |sed 's/\#//g'`
@@ -622,14 +596,6 @@ elif [ $control == "available" ];then
                 	/sbin/ilorest logout |tee > /dev/null
 	        	}		
 
-			 ### 避免重複更新
-			 #       get-state
-			 #       State_tmp=`cat $State`
-			 #       if [ $State_tmp == "InPost" ];then
-			 #           echo "Server 忙碌中" |tee >> $BIOS_log
-			 #       elif [ $State_tmp == "FinishedPost" ];then
-
-
 				### 取得BIOS設定
 	        	get-bios-10
 
@@ -774,12 +740,6 @@ elif [ $control == "available" ];then
 	        	else
 	            	echo "=== HP-G10 restart ERROR ===" |tee >> $BIOS_log
 	        	fi
-
-			 ######################################################################################################
-
-				#		else
-				#			echo "=== HP server_state ERROR ===" |tee >> $BIOS_log
-				#       fi
 
 			else
 				time_stamp
