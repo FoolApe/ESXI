@@ -74,7 +74,7 @@ do
 		snmp_key=$(sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system snmp get" |grep Communities |awk -F \: '{print $2}' |sed 's/^[ \t]*//g')
 		snmp_enable=$(sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system snmp get" |grep Enable |awk -F \: '{print $2}' |sed 's/^[ \t]*//g')
 		wait
-		if [ "$snmp_enable" == "true" -a "$snmp_key" == "cyanyellowgreen168" ];then
+		if [ "$snmp_enable" == "true" -a "$snmp_key" == "cy*****68" ];then
 			SNMP_chk="OK"
 		else
 			SNMP_chk="NO"
@@ -183,7 +183,7 @@ do
 				#echo "!!! Coredump設定 !!!"
 				CoreD_chk="NO"
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip	"esxcli system coredump network set --enable false" |tee >> $log
-				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.213.10.10 --server-port 6500" |tee >> $log
+				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.10.10.10 --server-port 6500" |tee >> $log
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --enable true" |tee >> $log
 				wait
 			fi
@@ -195,7 +195,7 @@ do
 				#echo "!!! Coredump設定 !!!"
 				CoreD_chk="NO"
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip	"esxcli system coredump network set --enable false" |tee >> $log
-				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.246.8.239 --server-port 6500" |tee >> $log
+				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.10.10.11 --server-port 6500" |tee >> $log
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --enable true" |tee >> $log
 				wait
 			fi
@@ -207,7 +207,7 @@ do
 				#echo "!!! Coredump設定 !!!"
 				CoreD_chk="NO"
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip	"esxcli system coredump network set --enable false" |tee >> $log
-				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.247.15.239 --server-port 6500" |tee >> $log
+				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.10.10.12 --server-port 6500" |tee >> $log
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --enable true" |tee >> $log
 				wait
 			fi
@@ -219,7 +219,7 @@ do
 				#echo "!!! Coredump設定 !!!"
 				CoreD_chk="NO"
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip	"esxcli system coredump network set --enable false" |tee >> $log
-				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.248.15.239 --server-port 6500" |tee >> $log
+				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.10.10.13 --server-port 6500" |tee >> $log
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --enable true" |tee >> $log
 				wait
 			fi
@@ -231,7 +231,7 @@ do
 				#echo "!!! Coredump設定 !!!"
 				CoreD_chk="NO"
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip	"esxcli system coredump network set --enable false" |tee >> $log
-				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.250.10.10 --server-port 6500" |tee >> $log
+				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.10.10.14 --server-port 6500" |tee >> $log
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --enable true" |tee >> $log
 				wait
 			fi
@@ -243,7 +243,7 @@ do
 				#echo "!!! Coredump設定 !!!"
 				CoreD_chk="NO"
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip	"esxcli system coredump network set --enable false" |tee >> $log
-				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.252.10.10 --server-port 6500" |tee >> $log
+				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --interface-name vmk0 --server-ipv4 10.10.10.15 --server-port 6500" |tee >> $log
 				sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "esxcli system coredump network set --enable true" |tee >> $log
 				wait
 			fi
@@ -377,17 +377,8 @@ do
 			local_disk_chk="OK"
 		fi				
 
-		### License check ### 2022/09/20 -> 轉移至鏡像時動作
-#		lic=`sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "vim-cmd vimsvc/license --show" |grep 'serial:' |awk -F \: '{print $2}' |sed 's/[[:space:]]//g'`
-#		if [ "$lic" == "$license" ];then
-#			Lic_chk='OK'
-#		else
-#			Lic_chk='NO'
-#			sshpass -f $pw ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@$ip "vim-cmd vimsvc/license --set=$license"
-#		fi
 
 		### 輸出結果
-#        echo "$ip","$SNMP_chk","$NTP_chk","$CoreD_chk","$Power_chk","$TSO4_chk","$TSO6_chk,$LRO_chk","$name_chk","$volume_chk","$local_disk_chk","$Lic_chk" |tee >> $log
 		echo "$ip","$SNMP_chk","$NTP_chk","$CoreD_chk","$Power_chk","$TSO4_chk","$TSO6_chk,$LRO_chk","$name_chk","$volume_chk","$local_disk_chk" |tee >> $log
 	fi
 }&
