@@ -20,6 +20,7 @@ $key2='5C2DM-20J1N-*****-UACE2-23XNL'
 Connect-VIserver -Server $server -User $user -Password $passwd |out-null
 foreach($x in get-content $list)
 {
+	### Add SSH server
 	$esxcli=Get-Esxcli -VMhost $x
 	$esxcli.network.firewall.ruleset.set($false,$true,"sshServer") |Out-Null
 	$esxcli.network.firewall.ruleset.allowedip.add("10.10.10.10","sshServer") |Out-Null
@@ -30,8 +31,9 @@ foreach($x in get-content $list)
 	$tmp=Get-VMHost -Name $x -Server $server |Get-AdvancedSetting -Name SunRPC.MaxConnPerIP
 	$num=echo $tmp |grep "SunRPC.MaxConnPerIP" |awk '{print $2}'
 
-	if("$num" -ne 32) ### For DRD infra
+	if("$num" -ne 32) 
 	{
+		### For DRD infra(multi volumes)
     	Get-VMHost -Name $x -Server $server |Get-AdvancedSetting -Name SunRPC.MaxConnPerIP |Set-AdvancedSetting -Value 32 -Confirm:$False |tee >> $log
 	}
 
