@@ -1,11 +1,11 @@
 import-Module VMware.VimAutomation.Core
 #環境變數，執行前請先確認
-$server = "172.31.10.100"
+$server = "VC_IP"
 $log='/tmp/vmhost-usage.log'
 $datetime=Get-Date -Format "yyyy.MM.dd"
 $file="/tmp/OA-${datetime}-$server.csv"
 $PASSW=ConvertTo-SecureString -String $env:DomainUserPassword -AsPlainText -Force
-$Cred=New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $env:DomainUser, $PASSW
+$Cred=New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $env:DomainUser, $PASSW ### 登入VC用的帳密 ###
 Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false
 
 ### 先清空舊資訊
